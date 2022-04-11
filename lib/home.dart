@@ -76,6 +76,15 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                     ],
+                  ),
+                  Padding(padding: EdgeInsets.all(15.6)),
+                  Text(
+                    'Hello There',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 19.4,
+                      fontWeight: FontWeight.w600
+                    ),
                   )
                 ],
               ),
