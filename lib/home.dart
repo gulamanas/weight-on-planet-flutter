@@ -8,12 +8,26 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  final TextEditingController _weightController = TextEditingController();
   int radioValue = 0;
+  double _finalResult = 0.0;
+  
 
-  void handleRadioValueChanged( value) {
+  void handleRadioValueChanged(value) {
     setState(() {
       radioValue = value;
       // print(radioValue);
+      switch (radioValue) {
+        case 0: _finalResult = calculateWeight(_weightController.text, 0.06);
+        break;
+
+        case 1: _finalResult = calculateWeight(_weightController.text, 0.38);
+        break;
+
+        case 1: _finalResult = calculateWeight(_weightController.text, 0.91);
+        break;
+        
+      }
     });
   }
 
@@ -42,7 +56,7 @@ class _HomeState extends State<Home> {
               child: Column(
                 children: [
                   TextField(
-                    controller: null,
+                    controller: _weightController,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                       labelText: 'Your Weight on Earth',
@@ -79,7 +93,7 @@ class _HomeState extends State<Home> {
                   ),
                   Padding(padding: EdgeInsets.all(15.6)),
                   Text(
-                    'Hello There',
+                    '$_finalResult',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 19.4,
@@ -93,5 +107,16 @@ class _HomeState extends State<Home> {
         ),
       ),
     );
+  }
+
+  calculateWeight(String weight, double multiplier) {
+    if (int.parse(weight).toString().isNotEmpty && int.parse(weight) > 0) {
+      // weight = mass * multiplier (surface gravity)
+      return int.parse(weight) * multiplier;
+    } else {
+      print('wrong');
+
+      return int.parse("180") * 0.38;
+    }
   }
 }
