@@ -8,12 +8,12 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final TextEditingController _weightController = TextEditingController();
+  final _weightController = TextEditingController();
   int radioValue = 0;
   double _finalResult = 0.0;
   
 
-  void handleRadioValueChanged(value) {
+  void handleRadioValueChanged(dynamic value) {
     setState(() {
       radioValue = value;
       // print(radioValue);
@@ -24,7 +24,7 @@ class _HomeState extends State<Home> {
         case 1: _finalResult = calculateWeight(_weightController.text, 0.38);
         break;
 
-        case 1: _finalResult = calculateWeight(_weightController.text, 0.91);
+        case 2: _finalResult = calculateWeight(_weightController.text, 0.91);
         break;
         
       }
