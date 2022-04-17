@@ -62,7 +62,10 @@ class _HomeState extends State<Home> {
                       labelText: 'Your Weight on Earth',
                       hintText: 'In Pounds',
                       icon: Icon(Icons.person_outline),
+                      suffixIcon: IconButton(onPressed: () => _weightController.clear() ,
+                      icon: Icon(Icons.clear))
                     ),
+            
                   ),
                   Padding(padding: EdgeInsets.all(5.0)),
                   Row(
@@ -113,10 +116,11 @@ class _HomeState extends State<Home> {
     if (int.parse(weight).toString().isNotEmpty && int.parse(weight) > 0) {
       // weight = mass * multiplier (surface gravity)
       return int.parse(weight) * multiplier;
-    } else {
+    }else {
       print('wrong');
 
       return int.parse("180") * 0.38;
     }
+    
   }
 }
